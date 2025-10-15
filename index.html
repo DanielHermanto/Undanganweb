@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Rima Nurfa Izah & Ajik Moh Arifin</title>
+    <!-- Import Font & CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Section Pembuka -->
+    <section id="pembuka">
+        <h1>Dear, Tamu Undangan</h1>
+        <button class="button" id="openButton">OPEN INVITATION</button>
+    </section>
+
+    <!-- Section Profil Pengantin -->
+    <section id="profil" class="hidden">
+        <h1>The Wedding of</h1>
+        <h2>Rima Nurfa Izah & Ajik Moh Arifin</h2>
+        <p>"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, 
+        dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir." (QS Ar-Rum:21).</p>
+        <p>"Cinta adalah perjalanan yang indah, dan hari ini kami memulai babak baru bersama."</p>
+    </section>
+
+    <!-- Section Detail Acara -->
+    <section id="detail" class="hidden">
+        <h2>Detail Acara</h2>
+        <p><i class="fa fa-clock"></i> Akad Nikah: Jumat, 7 November 2025, pukul 08:00 WIB - Selesai</p>
+        <p><i class="fa fa-map-marker"></i> Alamat: Dk. Poncomulyo RT 07/RW 02, Desa Gadudero, Kecamatan Sukolilo, Kabupaten Pati</p>
+    </section>
+
+    <!-- Section Galeri Foto -->
+    <section id="galeri" class="hidden">
+        <h2>Galeri Foto</h2>
+        <div class="inv-gallery">
+            <figure class="frame">
+                <img src="images/1.jpg" alt="Rima & Ajik">
+                <figcaption>Rima & Ajik — 20 Desember 2025</figcaption>
+            </figure>
+            <figure class="frame polaroid">
+                <img src="images/2.jpg" alt="Pasangan">
+                <figcaption>Sweet Moments</figcaption>
+            </figure>
+            <figure class="frame">
+                <img src="images/3.jpg" alt="Keluarga">
+                <figcaption>Family</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- Section Peta Lokasi -->
+    <section id="peta" class="hidden">
+        <h2>Peta Lokasi</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=..." width="80%" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe>
+    </section>
+
+    <!-- Section Rekening Hadiah -->
+    <section id="rekening" class="hidden">
+        <h2>Rekening Hadiah</h2>
+        <p>Bank: BCA (Logo di sini)</p>
+        <p>Nama Pemilik: Nadila Smith</p>
+        <p>Nomor Rekening: 1234567890</p>
+    </section>
+
+    <!-- Section Ucapan -->
+    <section id="ucapan" class="hidden">
+        <h2>Ucapan untuk Pengantin</h2>
+        <form id="ucapanForm">
+            <input type="text" id="nama" placeholder="Nama Anda" required><br>
+            <textarea id="pesan" placeholder="Pesan Anda" required></textarea><br>
+            <button type="submit">Kirim Ucapan</button>
+        </form>
+        <div id="daftarUcapan"></div>
+    </section>
+
+    <!-- Section Penutup -->
+    <section id="penutup" class="hidden">
+        <h2>Penutup</h2>
+        <p>Terima kasih atas kehadiran dan doa Anda. Dengan penuh cinta, Rima & Ajik dan keluarga.</p>
+    </section>
+
+    <!-- Musik -->
+    <audio id="backgroundMusic" loop>
+        <source src="lagu-weding.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
