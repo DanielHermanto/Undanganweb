@@ -3,63 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wedding of Rima Nurfa Izah & Ajik Moh Arifin</title>
-    <!-- Import Font & CSS -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>The Wedding of Rima Nurfa Izah & Ajik Moh Arifin</title>
+    <style>
+        /* Import font dari Google Fonts (untuk tipografi elegan) */
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap');
+
+        /* Palet warna: Emas lembut (#D4AF37), Putih, Hitam transparan */
+        :root {
+            --gold: #D4AF37;
+            --white: #ffffff;
+            --black-transparent: rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Playfair Display', serif; /* Font serif modern untuk nama pengantin */
+            color: var(--white);
+            overflow-x: hidden;
+            background-color: #000; /* Latar hitam untuk tema malam */
+            scroll-behavior: smooth; /* Smooth scroll global */
+        }
+
+        section {
+            position: relative;
+            height: 100vh; /* Setiap section penuh layar */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efek parallax ringan */
+            transition: background-image 0.5s ease-in-out; /* Transisi halus background */
+            overflow: hidden;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--black-transparent); /* Overlay transparan untuk teks mudah dibaca */
+            z-index: 1;
+        }
+
+        section > * {
+            position: relative;
+            z-index: 2; /* Teks di atas overlay */
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Background untuk setiap section (ganti URL dengan foto Anda) */
+        #pembuka { background-image: url('images/1.jpg'); }
+        #profil { background-image: url('images/1.jpg'); }
+        #detail { background-image: url('images/2.jpg'); }
+        #galeri { background-image: url('images/2.jpg'); }
+        #peta { background-image: url('images/3.jpg'); }
+        #rekening { background-image: url('images/3.jpg'); }
+        #ucapan { background-image: url('images/4.jpg'); }
+        #penutup { background-image: url('images/4.jpg'); }
+
+        h1 {
+            font-family: 'Great Vibes', cursive; /* Font script halus untuk "The Wedding of" */
+            font-size: 3em;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif; /* Font serif modern untuk nama pengantin */
+            font-size: 100%;
+            color: var(--white);
+        }
+
+        .button {
+            background-color: rgba(255, 255, 255, 0.2); /* Putih semi-transparan */
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: rgba(255, 255, 255, 0.4); /* Efek hover lembut */
+            transform: scale(1.05);
+        }
+
+        /* Animasi section */
+        .hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Styling untuk carousel */
+        #carousel {
+            display: flex;
+            overflow-x: auto;
+            width: 90%;
+            scrollbar-width: none; /* Hide scrollbar for clean look */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        #carousel::-webkit-scrollbar {
+            display: none; /* Hide scrollbar in Chrome, Safari, Opera */
+        }
+
+        .carousel-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            flex-shrink: 0; /* Jaga ukuran item saat scrolling */
+        }
+
+        #carousel img {
+            width: 200px; /* Ukuran gambar */
+            height: 200px; /* Buat persegi untuk bingkai bulat */
+            object-fit: cover; /* Pastikan gambar mengisi area tanpa distorsi */
+            border-radius: 50%; /* Bingkai bulat */
+            transition: transform 0.3s ease; /* Efek hover */
+        }
+
+        #carousel img:hover {
+            transform: scale(1.1); /* Perbesar gambar saat dihover */
+        }
+
+        .carousel-item p {
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: var(--gold); /* Warna caption sesuai tema */
+            font-style: italic;
+        }
+
+        /* Tombol prev/next */
+        .carousel-button {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+        }
+
+        #prevBtn { left: 10px; }
+        #nextBtn { right: 10px; }
+
+        /* Responsivitas */
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            section { height: auto; padding: 50px 0; }
+            .button { font-size: 1em; padding: 10px 20px; }
+            #carousel img { width: 150px; height: 150px; } /* Ukuran gambar lebih kecil di mobile */
+            .carousel-item p { font-size: 0.8em; }
+            .carousel-button { padding: 8px; font-size: 1.2em; }
+        }
+    </style>
 </head>
 <body>
     <!-- Section Pembuka -->
     <section id="pembuka">
-        <h1>Dear, Tamu Undangan</h1>
+        <h1>Dear</h1>
+        <h2>Tamu Undangan</h2>
         <button class="button" id="openButton">OPEN INVITATION</button>
     </section>
 
     <!-- Section Profil Pengantin -->
     <section id="profil" class="hidden">
+          <h2>بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ <br>Dengan memohon rahmat dan ridha Allah Subhanahu wa Ta‘ala,
+kami bermaksud menyelenggarakan pernikahan kami.</h2>
         <h1>The Wedding of</h1>
-        <h2>Rima Nurfa Izah & Ajik Moh Arifin</h2>
-        <p>"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, 
-        dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir." (QS Ar-Rum:21).</p>
+        <h3>Rima Nurfa Izah & Ajik Moh Arifin</h3>
+        <p>"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. 
+            Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir." (QS Ar-Rum:21).</p>
         <p>"Cinta adalah perjalanan yang indah, dan hari ini kami memulai babak baru bersama."</p>
     </section>
 
     <!-- Section Detail Acara -->
     <section id="detail" class="hidden">
         <h2>Detail Acara</h2>
-        <p><i class="fa fa-clock"></i> Akad Nikah: Jumat, 7 November 2025, pukul 08:00 WIB - Selesai</p>
-        <p><i class="fa fa-map-marker"></i> Alamat: Dk. Poncomulyo RT 07/RW 02, Desa Gadudero, Kecamatan Sukolilo, Kabupaten Pati</p>
+        <p><i class="fa fa-clock"></i> Akad Nikah: Jumat,7 November 2025, pukul 08:00 WIB - Selesai</p>
+        <p><i class="fa fa-map-marker"></i> Alamat: Dk. Poncomulyo RT 07/RW 02, Desa Gadudero, Kecamatan Sukolilo, Kabupaten Pati </p>
     </section>
 
-    <!-- Section Galeri Foto -->
+    <!-- Section Galeri Foto (Direvisi) -->
     <section id="galeri" class="hidden">
         <h2>Galeri Foto</h2>
-        <div class="inv-gallery">
-            <figure class="frame">
-                <img src="images/1.jpg" alt="Rima & Ajik">
-                <figcaption>Rima & Ajik — 20 Desember 2025</figcaption>
-            </figure>
-            <figure class="frame polaroid">
-                <img src="images/2.jpg" alt="Pasangan">
-                <figcaption>Sweet Moments</figcaption>
-            </figure>
-            <figure class="frame">
-                <img src="images/3.jpg" alt="Keluarga">
-                <figcaption>Family</figcaption>
-            </figure>
+        <button class="carousel-button" id="prevBtn">&lt;</button>
+        <div id="carousel" style="position: relative; margin: 0 40px;">
+            <div class="carousel-item">
+                <img src="images/1.jpg" alt="Prewedding 1">
+            </div>
+            <div class="carousel-item">
+                <img src="images/2.jpg" alt="Prewedding 2">
+            </div>
+            <div class="carousel-item">
+                <img src="images/3.jpg" alt="Prewedding 3">
+            </div>
+            <div class="carousel-item">
+                <img src="images/4.jpg" alt="Prewedding 3">
+            </div>
+            <div class="carousel-item">
+                <img src="images/5.jpg" alt="Prewedding 3">
+            </div>
+            <div class="carousel-item">
+                <img src="images/6.jpg" alt="Prewedding 3">
+            </div>
         </div>
+        <button class="carousel-button" id="nextBtn">&gt;</button>
     </section>
 
     <!-- Section Peta Lokasi -->
     <section id="peta" class="hidden">
         <h2>Peta Lokasi</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=..." width="80%" height="400" style="border:0;" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=..." width="80%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </section>
 
     <!-- Section Rekening Hadiah -->
     <section id="rekening" class="hidden">
         <h2>Rekening Hadiah</h2>
-        <p>Bank: BCA (Logo di sini)</p>
+        <p>Bank: BCA</p>
         <p>Nama Pemilik: Nadila Smith</p>
         <p>Nomor Rekening: 1234567890</p>
     </section>
@@ -78,15 +260,79 @@
     <!-- Section Penutup -->
     <section id="penutup" class="hidden">
         <h2>Penutup</h2>
-        <p>Terima kasih atas kehadiran dan doa Anda. Dengan penuh cinta, Rima & Ajik dan keluarga.</p>
+        <p>Kami memohon doa agar Allah menjadikan pernikahan ini sakinah, mawaddah, warahmah.</p>
     </section>
 
-    <!-- Musik -->
     <audio id="backgroundMusic" loop>
-        <source src="lagu-weding.mp3" type="audio/mpeg">
+        <source src="lagu weding.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Script -->
-    <script src="script.js"></script>
+    <script>
+        // Variabel mudah diubah
+        const namaPengantin = "Nadila & Daffa";
+        const tanggalAcara = "15 Juni 2024";
+        const lokasiAcara = "Hotel XYZ, Jakarta";
+        const rekeningBank = "BCA";
+        const nomorRekening = "1234567890";
+        const pemilikRekening = "Nadila Smith";
+        const musikURL = "lagu weding.mp3";
+
+        document.getElementById('openButton').addEventListener('click', function() {
+            document.getElementById('pembuka').style.opacity = 0;
+            setTimeout(() => {
+                window.scrollTo({ top: document.getElementById('profil').offsetTop, behavior: 'smooth' });
+                document.getElementById('backgroundMusic').play();
+            }, 500);
+        });
+
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.classList.remove('hidden');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        document.getElementById('ucapanForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nama = document.getElementById('nama').value;
+            const pesan = document.getElementById('pesan').value;
+            let ucapanList = JSON.parse(localStorage.getItem('ucapanList')) || [];
+            ucapanList.push({ nama, pesan });
+            localStorage.setItem('ucapanList', JSON.stringify(ucapanList));
+            tampilkanUcapan();
+            document.getElementById('ucapanForm').reset();
+        });
+
+        function tampilkanUcapan() {
+            const ucapanList = JSON.parse(localStorage.getItem('ucapanList')) || [];
+            const daftarUcapan = document.getElementById('daftarUcapan');
+            daftarUcapan.innerHTML = '';
+            ucapanList.forEach(ucapan => {
+                daftarUcapan.innerHTML += `<p><strong>${ucapan.nama}:</strong> ${ucapan.pesan}</p>`;
+            });
+        }
+
+        tampilkanUcapan();
+
+        const carousel = document.getElementById('carousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const scrollAmount = 250; // Sesuaikan dengan lebar item
+
+        prevBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
